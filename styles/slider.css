@@ -1,0 +1,30 @@
+.slider_container {
+    /* margin-top: 73px; */
+    width: 100%;
+    height: 550px;
+    border-radius: 20px;
+}
+
+.slider_track {
+    flex-wrap: nowrap;
+    transition: .7s ease-in-out;
+    gap: 10px;
+    height: inherit;
+    width: 100%;
+}
+
+.slider_item {
+    width: 100%;
+    height: inherit;    
+    overflow: hidden;    
+    position: relative;
+
+    background-color: #2980B9;
+
+    border-radius: 5px;
+}
+
+.slider_img {
+    /* object-fit: cover; */
+    width: 100%;
+}

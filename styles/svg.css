@@ -1,0 +1,62 @@
+svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg_logo {
+    width: 33px;
+    height: 33px;
+    fill: #127369;
+    margin-right: 5px;
+    /* margin-top: 6px; */
+}
+
+.svg_cup {
+    width: 18px;
+    height: 18px;
+    fill: #BFBFBF;
+    transition: all .3s ease-in-out;
+}
+
+.svg_tv {
+    width: 18px;
+    height: 18px;
+    fill: #BFBFBF;
+    transition: all .3s ease-in-out;
+}
+
+.svg_fire {
+    width: 18px;
+    height: 18px;
+    fill: #BFBFBF;
+    transition: all .3s ease-in-out;
+}
+
+.svg_search {
+    width: 20px;
+    height: 20px;
+    fill: #BFBFBF;
+}
+
+.svg_user {
+    width: 45px;
+    height: 45px;
+    fill: #84B026;
+    margin-right: 3px;
+}
+
+.svg_clear {
+    width: 20px;
+    height: 20px;
+    fill: #BFBFBF;
+    /* margin-right: 7px; */
+    transition: all .3s ease-in-out;
+}
+
+.svg_star {
+    width: 20px;
+    height: 20px;
+    fill: #e8ff3b;
+}
+

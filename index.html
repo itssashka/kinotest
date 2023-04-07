@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- icon -->
+    <link rel="icon" type="img/png" href="imgs/favicon.png">
+
+    <!-- fonts -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/svg.css">
+    <link rel="stylesheet" href="styles/slider.css">
+    <link rel="stylesheet" href="styles/modal.css">
+
+    <!-- scripts -->
+    <script type="module" src="./src/main.js" defer></script>
+    <script type="module" src="./src/modal.js" defer></script>
+    <script type="module" src="./src/search.js" defer></script>
+    <script type="module" src="./src/login.js" defer></script>
+
+    <title>Kinopoisk 2.0</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- header -->
+        <div class="header dflex_row jcCenter_aiCenter">            
+            <div class="heander_content content_box dflex_row jcSpBtw_aiCenter">
+                <div class="header_logo">
+                    <a href="index.html" class="logo dflex_row jcStart_aiCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg_logo">
+                            <path d="M448 32H361.9l-1 1-127 127h92.1l1-1L453.8 32.3c-1.9-.2-3.8-.3-5.8-.3zm64 128V96c0-15.1-5.3-29.1-14-40l-104 104H512zM294.1 32H201.9l-1 1L73.9 160h92.1l1-1 127-127zM64 32C28.7 32 0 60.7 0 96v64H6.1l1-1 127-127H64zM512 192H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192z"/>
+                        </svg>
+                        <div>Showy</div>                          
+                    </a>
+                </div>
+                <div class="nav_menu dflex_row jcSpBtw_aiCenter">
+                    <a href="#" class="nav_menu-item dflex_row jcCenter_aiCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg_cup">
+                            <path d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
+                        </svg>
+                        <p>ТОП-250</p>
+                    </a>
+                    <a href="#" class="nav_menu-item dflex_row jcCenter_aiCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg_tv">
+                            <path d="M64 64V352H576V64H64zM0 64C0 28.7 28.7 0 64 0H576c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM128 448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+                        </svg>
+                        <p>Сериалы</p>
+                    </a>
+                    <a href="#" class="nav_menu-item dflex_row jcCenter_aiCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg_fire">
+                            <path d="M159.3 5.4c7.8-7.3 19.9-7.2 27.7 .1c27.6 25.9 53.5 53.8 77.7 84c11-14.4 23.5-30.1 37-42.9c7.9-7.4 20.1-7.4 28 .1c34.6 33 63.9 76.6 84.5 118c20.3 40.8 33.8 82.5 33.8 111.9C448 404.2 348.2 512 224 512C98.4 512 0 404.1 0 276.5c0-38.4 17.8-85.3 45.4-131.7C73.3 97.7 112.7 48.6 159.3 5.4zM225.7 416c25.3 0 47.7-7 68.8-21c42.1-29.4 53.4-88.2 28.1-134.4c-4.5-9-16-9.6-22.5-2l-25.2 29.3c-6.6 7.6-18.5 7.4-24.7-.5c-16.5-21-46-58.5-62.8-79.8c-6.3-8-18.3-8.1-24.7-.1c-33.8 42.5-50.8 69.3-50.8 99.4C112 375.4 162.6 416 225.7 416z"/>
+                        </svg>
+                        <p>Смотрят сейчас</p>
+                    </a>
+                </div>
+                <div class="nav_search">
+                    <div class="nav_search-box dflex_row jcStart_aiCenter form">
+                        <form action="#" class="form_search dflex_row jcCenter_aiCenter">
+                            <input type="text" class="input_search input dflex_row jcStart_aiCenter" placeholder="Поиск">
+                            <div class="btn_clear hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg_clear">
+                                    <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                                </svg>
+                            </div>
+                            <button type="submit" class="search_submit dflex_row jcCenter_aiCentet">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg_search">
+                                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="header_login">
+                    <a href="#" class="login dflex_row jcEnd_aiCenter">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="svg_user">
+                            <path d="M14.81,12.28a3.73,3.73,0,0,0,1-2.5,3.78,3.78,0,0,0-7.56,0,3.73,3.73,0,0,0,1,2.5A5.94,5.94,0,0,0,6,16.89a1,1,0,0,0,2,.22,4,4,0,0,1,7.94,0A1,1,0,0,0,17,18h.11a1,1,0,0,0,.88-1.1A5.94,5.94,0,0,0,14.81,12.28ZM12,11.56a1.78,1.78,0,1,1,1.78-1.78A1.78,1.78,0,0,1,12,11.56ZM19,2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V5A3,3,0,0,0,19,2Zm1,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div class="content_box main_container dflex_column jcStart_aiStart">
+            <div class="slider_container">
+                <div class="slider_track dflex_row jcStart_aiCenter">
+                    <div class="slider_item dflex_row jcCenter_aiCenter">
+                        <!-- <div class="slider_img"><img src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/464963.jpg" alt="111"></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="films_container dflex_column jcStart_aiStart">
+                <h1 class="headers">Премьеры</h1>
+                <div class="films_list dflex_row jcStart_aiStart">
+                </div>
+                <div class="pagination_btn btns dflex_row jcCenter_aiCenter">Показать больше</div>
+            </div>
+
+        </div>
+
+
+        <!-- nav bottom -->
+        <footer class="footer dflex_row jcCenter_aiCenter">
+            <div class="nav_menu_bottom dflex_row jcSpBtw_aiCenter disable content_box">
+                <a href="#" class="nav_menu-item dflex_row jcCenter_aiCenter">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg_cup">
+                        <path d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
+                    </svg>
+                    <p>ТОП-250</p>
+                </a>
+                <a href="#" class="nav_menu-item dflex_row jcCenter_aiCenter">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg_tv">
+                        <path d="M64 64V352H576V64H64zM0 64C0 28.7 28.7 0 64 0H576c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM128 448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+                    </svg>
+                    <p>Сериалы</p>
+                </a>
+                <a href="#" class="nav_menu-item dflex_row jcCenter_aiCenter">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg_fire">
+                        <path d="M159.3 5.4c7.8-7.3 19.9-7.2 27.7 .1c27.6 25.9 53.5 53.8 77.7 84c11-14.4 23.5-30.1 37-42.9c7.9-7.4 20.1-7.4 28 .1c34.6 33 63.9 76.6 84.5 118c20.3 40.8 33.8 82.5 33.8 111.9C448 404.2 348.2 512 224 512C98.4 512 0 404.1 0 276.5c0-38.4 17.8-85.3 45.4-131.7C73.3 97.7 112.7 48.6 159.3 5.4zM225.7 416c25.3 0 47.7-7 68.8-21c42.1-29.4 53.4-88.2 28.1-134.4c-4.5-9-16-9.6-22.5-2l-25.2 29.3c-6.6 7.6-18.5 7.4-24.7-.5c-16.5-21-46-58.5-62.8-79.8c-6.3-8-18.3-8.1-24.7-.1c-33.8 42.5-50.8 69.3-50.8 99.4C112 375.4 162.6 416 225.7 416z"/>
+                    </svg>
+                    <p>Смотрят сейчас</p>
+                </a>
+                <div class="nav_search_bottom nav_menu-item dflex_row jcCenter_aiCenter">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg_search">
+                        <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+                    </svg>
+                    <p>Поиск</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal dflex_column jcStart_aiCenter">        
+        <div class="modal_body content_box dflex_column jcStart_aiStart">
+            <div class="btn_close_modal">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg_clear">
+                    <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                </svg>
+            </div>
+            <div class="modal_content dflex_column jcStart_aiStart">
+            </div>            
+        </div>
+    </div>
+
+</body>
+</html>

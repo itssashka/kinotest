@@ -1,0 +1,449 @@
+.modal {
+    background-color: rgba(22, 31, 48,.96);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 83vh;
+    z-index: 999;
+    transition: all .3s ease-in-out;
+    padding-top: 7vh;
+    padding-bottom: 10vh;
+
+    visibility: hidden; 
+    opacity: 0;
+
+    overflow-y: auto;
+    overflow-x: hidden; 
+}
+
+.modal.open {
+    visibility: visible;
+    opacity: 100%;
+}
+
+.btn_close_modal{
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.btn_close_modal:hover > svg {
+    fill:#127369; 
+    animation: scale 0.5s;
+}
+
+@keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn_close_modal svg {
+    height:50px;
+    width:50px;
+}
+
+/* modal content */
+.modal_content{
+    gap: 40px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 5%;
+}
+
+.modal_body {
+    min-height: 100%;
+    position: relative;
+}
+
+.modal_film{
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal_film {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.modal_img{
+    position: relative;    
+}
+
+.add_to_favorite {
+    width: 100%;
+}
+
+.add_to_favorite.disable {
+    background-color: #E74C3C;
+}
+
+.add_to_favorite.disable:hover {
+    background-color: #f35b4b ;
+}
+
+.modal_film_rating {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 55px;
+    height: 27px;
+    background-color: #217373;
+    border-radius: 3px;
+
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.modal_img img{
+    width: 250px;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .modal_img img {
+        width: 350px;
+    }
+
+    .modal_film_name {
+        align-self: center;
+    }
+}
+
+
+
+.modal_film_desc {
+    gap: 20px;
+}
+
+.slogan {
+    font-weight: 800;
+}
+
+.modal_film_about {
+    text-align: justify;
+}
+
+.modal_film_info {
+    gap: 15px;
+}
+
+.info_title {
+    width: 210px;
+    font-weight: 800;
+}
+
+@media (max-width: 560px) {
+    .info_title {
+        width: 150px;
+    }
+}
+
+/* btn */
+
+.modal_to_kinopisk_btn {
+    width: 100%;
+    background: linear-gradient(279deg,#ff503d,#ffae19);
+}
+
+/* comments block */
+.comments_content {
+    width: 100%;
+    gap: 20px;
+}
+
+@media (max-width: 768px){
+    .comments_content {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.comments_block {
+    width: 100%;
+    gap: 20px;
+}
+
+
+.modal_comments {
+    width: 50%;
+    gap: 20px;
+}
+
+@media (max-width: 768px){
+    .modal_comments {
+        width: 100%;
+    }
+}
+
+.comment {
+    position: relative;
+    width: 100%;
+    gap: 10px;
+}
+
+.btn_delete_comment {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.btn_delete_comment svg {
+    transition: all .3s ease-in-out;
+}
+
+.btn_delete_comment:hover > svg {
+    fill: #127369;
+    animation: scale 0.5s;
+}
+
+
+
+.comment_title {
+    gap: 10px;
+    font-size: 20px;
+}
+
+.comment_user_name {
+    cursor: pointer;
+}
+
+.comment_date {
+    color:white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.comment_text {
+    word-wrap: break-word;
+    width: 100%;
+}
+
+/* add comment */
+
+.modal_add_comment {
+    width: 50%;   
+    position: relative;
+}
+
+@media (max-width: 768px){
+    .modal_add_comment {
+        width: 100%;
+    }
+}
+
+.modal_add_comment.fixed {
+    position: fixed;
+    top: 10px;
+}
+
+.add_comment_form {
+    width: 100%;
+}
+
+.text_comment {
+    width: 100%;
+    min-height: 100px;
+    max-height: 345px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    resize: vertical;
+    font-size: 16px;
+}
+
+.btn_add_comment {
+    width: 100%;
+    
+}
+
+/* modal_login */
+
+.modal_authorization {
+    width: 450px;
+    gap: 30px;
+    align-self: center;
+}
+
+@media (max-width: 480px){
+    .modal_authorization {
+        width: 100%;
+    }
+}
+ 
+.form_login {
+    width: 100%;
+    gap: 20px;
+}
+
+.form_account_item{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    padding: 0 10px;
+    border: none;
+}
+
+.form_account_item.error {
+    border: 2px solid #E74C3C;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    10%, 90% {
+      transform: translateX(-5px);
+    }
+    30%, 70% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+  }
+
+.form_error_message {
+    color: #E74C3C;
+    font-weight: 800;
+}
+
+.form_submit_btn{
+    width: 100%;
+}
+
+.modal_btn_switch {
+    color: #84B026;
+    cursor: pointer;
+    border-bottom: dashed 1px #84B026;
+    transition: all .3s ease-in-out;
+}
+
+.modal_btn_switch:hover {
+    color: white;
+    border-color: white;
+}
+
+
+/* account */
+.modal_account {
+    /* width: 700px; */
+    width: 100%;
+    align-self: center;
+    gap: 30px;
+}
+
+
+.block_header {
+    width: 100%;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.exit_btn {
+    width: 130px;
+    background-color: #E74C3C;
+}
+
+.exit_btn:hover {
+    background-color: #f35b4b;
+}
+
+.modal_user_info {
+    gap: 15px;
+}
+
+.account_user_title {
+    font-weight: 800;
+    width: 250px;
+}
+
+@media (max-width: 560px) {
+    .account_user_title {
+        width: 130px;
+    }
+}
+
+.modal_favorite {
+    gap: 15px;
+    width: 100%;
+}
+
+.fav_movie {
+    gap: 20px;
+    width: 100%;
+}
+
+.fav_movie_img {
+    width: 100px;
+}
+
+.fav_movie_img img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.fav_movie_desc {
+    width: 100%;
+    align-self: center;
+}
+
+.remove_frome_favorite {
+    cursor: pointer;
+    border-bottom: dashed 1px #84B026;
+    transition: all .3s ease-in-out;
+}
+
+.remove_frome_favorite:hover {
+    color: white;
+    border-color: white;
+}
+
+/* modal search */
+.modal_search_box {
+    width: 100%;
+    background-color: white;
+    height: 40px;
+    padding: 0 13px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.form_search_mod {
+    width: 100%;
+}
+
+.input_search_mod {
+    width: 100%;
+    background: transparent;
+}
+
+.btn_clear_mod {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn_clear_mod.hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
+
