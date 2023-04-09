@@ -34,11 +34,13 @@ export default function showModal(modalType, apiKey, filmId) {
 async function modalMovie(apiKey, filmId) {
     const modalContent = document.querySelector('.modal_content');    
     modalContent.innerHTML = await returnFilmInfo(apiKey, filmId);
-    modalContent.appendChild(addCommentBlock());    
+    modalContent.appendChild(addCommentBlock());  
+    const user = new User();  
 
-    await addToFavorite(apiKey, filmId);
 
-    const user = new User();
+    if (user.isLogin() && !isFilmInFavorite(filmId)) await addToFavorite(apiKey, filmId);
+
+    
     const commentForm = document.querySelector('.add_comment_form');
 
     commentForm.addEventListener('submit', event => {
@@ -55,6 +57,7 @@ async function modalMovie(apiKey, filmId) {
 async function returnFilmInfo(apiKey, filmId) {
     const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/${filmId}`
     const data = await getFilmsFromApi(apiKey, url); 
+    const favorite = new Favorite();
     const returnedData = `
         <div class="modal_film dflex_row jcStart_aiStart">      
             <div class="dflex_column jcStart_aiStart">
@@ -62,9 +65,14 @@ async function returnFilmInfo(apiKey, filmId) {
                     <div class="modal_film_rating dflex_row jcCenter_aiCenter">${data.ratingKinopoisk ? data.ratingKinopoisk : "-"}</div>
                     <img src="${data.posterUrlPreview}" alt="Film Poster">
                 </div>
-                <div class="add_to_favorite btns dflex_column jcCenter_aiCenter">
-                    Добавить в избранное
-                </div>
+                ${(favorite.isLogin() && !isFilmInFavorite(filmId))
+                    ? ` <div class="add_to_favorite btns dflex_column jcCenter_aiCenter">
+                            Добавить в избранное
+                        </div>
+                    `
+                    : ''
+                }
+                
             </div>          
             
             <div class="modal_film_desc dflex_column jcStart_aiStart">
@@ -115,6 +123,7 @@ async function addToFavorite(apiKey, filmId){
 
     addToFavoritebtn.addEventListener('click', e => {
         favorite.addToFavorite(filmData);
+        addToFavoritebtn.classList.add(`disable`)
     })
 }
 
@@ -277,6 +286,20 @@ function modalSearch(){
     `
     modalSearchEvents();
 
+}
+
+function isFilmInFavorite(currentFilmId){
+    const favorite = new Favorite();
+    const favFilms = favorite.getFavorites();
+    let isInFavorite = false;
+    favFilms.forEach(film=>{
+        if(!film) return
+        if(film.filmKpId == currentFilmId) {
+            isInFavorite = true;
+        }
+    })
+
+    return isInFavorite;
 }
 
 

@@ -87,11 +87,8 @@
 }
 
 .add_to_favorite.disable {
-    background-color: #E74C3C;
-}
-
-.add_to_favorite.disable:hover {
-    background-color: #f35b4b ;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .modal_film_rating {

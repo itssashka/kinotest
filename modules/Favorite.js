@@ -30,8 +30,6 @@ export default class Favorite extends User {
             } else return user;
         });
 
-        console.log(usersList);
-
         const newUsers = {users:usersList};
 
         localStorage.setItem("Users", JSON.stringify(newUsers));
@@ -42,7 +40,6 @@ export default class Favorite extends User {
         const users = JSON.parse(localStorage.getItem('Users'));
         let favorites = [];
 
-        console.log(users);
         for (let user of users.users) {
             if(user.userEmail === currentUser && user.favoiteFilms !== undefined) {
                 favorites = user.favoiteFilms;
