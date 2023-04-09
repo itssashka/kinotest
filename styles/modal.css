@@ -385,6 +385,11 @@
     width: 100%;
 }
 
+.fav_movies {
+    gap: 15px;
+    width: 100%;
+}
+
 .fav_movie {
     gap: 20px;
     width: 100%;
@@ -402,15 +407,16 @@
 .fav_movie_desc {
     width: 100%;
     align-self: center;
+    gap: 10px;
 }
 
-.remove_frome_favorite {
+.remove_from_favorite {
     cursor: pointer;
     border-bottom: dashed 1px #84B026;
     transition: all .3s ease-in-out;
 }
 
-.remove_frome_favorite:hover {
+.remove_from_favorite:hover {
     color: white;
     border-color: white;
 }

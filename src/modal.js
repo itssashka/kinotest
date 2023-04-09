@@ -2,8 +2,8 @@ import getFilmsFromApi from "../modules/getFilmsList.js";
 import { eventLogin, eventReg, showUserName } from "./login.js";
 import User from "../modules/User.js";
 import { addComment, addCommentBlock, showComments } from "./showComments.js";
-import addEventScroll from "../modules/onScroll.js";
 import modalSearchEvents from "./search.js";
+import Favorite from "../modules/Favorite.js";
 
 const modal = document.querySelector('.modal'); // modal window
 const btnCloseModal = document.querySelector('.btn_close_modal'); // close btn
@@ -33,9 +33,11 @@ export default function showModal(modalType, apiKey, filmId) {
 
 async function modalMovie(apiKey, filmId) {
     const modalContent = document.querySelector('.modal_content');    
-    // const commentsBlock = document.querySelector(`.comments_content`);
     modalContent.innerHTML = await returnFilmInfo(apiKey, filmId);
     modalContent.appendChild(addCommentBlock());    
+
+    await addToFavorite(apiKey, filmId);
+
     const user = new User();
     const commentForm = document.querySelector('.add_comment_form');
 
@@ -46,17 +48,13 @@ async function modalMovie(apiKey, filmId) {
     })
 
     showComments(filmId);
-    const modalAddCommentBlock = document.querySelector('.modal_add_comment');
-    addEventScroll(modalAddCommentBlock);
 }
 
 
 
 async function returnFilmInfo(apiKey, filmId) {
     const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/${filmId}`
-    const data = await getFilmsFromApi(apiKey, url);
-
-
+    const data = await getFilmsFromApi(apiKey, url); 
     const returnedData = `
         <div class="modal_film dflex_row jcStart_aiStart">      
             <div class="dflex_column jcStart_aiStart">
@@ -107,6 +105,17 @@ async function returnFilmInfo(apiKey, filmId) {
     `
 
     return returnedData;
+}
+
+async function addToFavorite(apiKey, filmId){
+    const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/${filmId}`
+    const addToFavoritebtn = document.querySelector('.add_to_favorite');
+    const favorite = new Favorite();
+    const filmData = await getFilmsFromApi(apiKey, url);
+
+    addToFavoritebtn.addEventListener('click', e => {
+        favorite.addToFavorite(filmData);
+    })
 }
 
 
@@ -184,42 +193,66 @@ function modalAccount() {
             </div>
             <div class="modal_favorite dflex_column jcStart_aiStart">
                 <div class="green_txt">Понравившиеся фильмы:</div>
-                <div class="fav_movie dflex_row jcStart_aiStart">
-                    <div class="fav_movie_img">
-                        <img src="./imgs/1.jpg" alt="">
-                    </div>
-                    <div class="fav_movie_desc dflex_row jcSpBtw_aiCenter">
-                        <div>Игра престолов</div>
-                        <div class="remove_frome_favorite green_txt">Удалить</div>
-                    </div>
-                </div>
-                <div class="fav_movie dflex_row jcStart_aiStart">
-                    <div class="fav_movie_img">
-                        <img src="./imgs/1.jpg" alt="">
-                    </div>
-                    <div class="fav_movie_desc dflex_row jcSpBtw_aiCenter">
-                        <div>Игра престолов</div>
-                        <div class="remove_frome_favorite green_txt">Удалить</div>
-                    </div>
-                </div>
-                <div class="fav_movie dflex_row jcStart_aiStart">
-                    <div class="fav_movie_img">
-                        <img src="./imgs/1.jpg" alt="">
-                    </div>
-                    <div class="fav_movie_desc dflex_row jcSpBtw_aiCenter">
-                        <div>Игра престолов</div>
-                        <div class="remove_frome_favorite green_txt">Удалить</div>
-                    </div>
+                <div class="fav_movies dflex_column jcStart_aiStart">
+
                 </div>
             </div>
         </div>
     `;   
+
+    const modalFavorite = document.querySelector('.fav_movies');
+    accountFavoriteFilms(modalFavorite)
     
     const exitBtn = document.querySelector('.exit_btn');
     exitBtn.addEventListener('click', event => {
         user.logOutUser();
         showUserName()
         modalLogin();        
+    })
+}
+
+function accountFavoriteFilms(modalFavorite) {
+    const favorite = new Favorite();
+    const favoriteFilms = favorite.getFavorites();
+    modalFavorite.innerHTML = ``;
+
+    if (favoriteFilms.length > 0) {
+        favoriteFilms.forEach(film => {            
+            if(film !== null) {
+                const movie = document.createElement('div');
+                movie.classList.add(`fav_movie`, `dflex_row`, `jcStart_aiStart`);
+                movie.setAttribute('data-movie-id', film.filmKpId)
+                movie.innerHTML = `
+                    <div class="fav_movie_img">
+                        <img src="${film.filmPoster}" alt="">
+                    </div>
+                    <div class="fav_movie_desc dflex_row jcSpBtw_aiCenter">
+                        <div>${film.filmName}</div>
+                        <div class="remove_from_favorite green_txt">Удалить</div>
+                    </div>
+                `
+    
+                modalFavorite.prepend(movie);
+                removeFromFavorite(film.filmKpId,modalFavorite);
+            }
+        });
+    }
+    
+
+    const movies = document.querySelectorAll(`.fav_movie`);
+    if(movies.length === 0) {
+        const favEmptyEll = document.createElement('div');
+        favEmptyEll.innerHTML = 'Здесь пока пусто';
+        modalFavorite.appendChild(favEmptyEll);
+    }
+}
+
+function removeFromFavorite(filmId,modalFavorite){
+    const favorite = new Favorite();
+    const removeBtn = document.querySelector('.remove_from_favorite');
+    removeBtn.addEventListener('click', e=>{
+        favorite.removeFromFavorite(filmId);
+        accountFavoriteFilms(modalFavorite);
     })
 }
 
