@@ -1,30 +1,62 @@
-.slider_container {
-    /* margin-top: 73px; */
+.swiper-container {
     width: 100%;
-    height: 550px;
-    border-radius: 20px;
+    margin-top: 72px;
+    display: flex;
+    justify-content: center;
 }
 
-.slider_track {
-    flex-wrap: nowrap;
-    transition: .7s ease-in-out;
-    gap: 10px;
-    height: inherit;
-    width: 100%;
-}
-
-.slider_item {
-    width: 100%;
-    height: inherit;    
-    overflow: hidden;    
+.swiper-item {
     position: relative;
-
-    background-color: #2980B9;
-
-    border-radius: 5px;
+    cursor: pointer;
+    filter: brightness(.4);
+    width: 1080px;
 }
 
-.slider_img {
-    /* object-fit: cover; */
+.swiper-item.swiper-slide-active {
+    filter: brightness(1);
+    transition: all .3s ease-in-out;
+}
+
+.swiper-item:hover .swiper-img {
+    filter: brightness(.8);
+}
+
+.swiper-img {
+    transition: all .3s ease-in-out;
+    position: relative;
+}
+
+.swiper-img::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     width: 100%;
+    height: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,175,0,0) 100%);
+}
+
+.swiper-img img {
+    width: 100%;    
+    height: 550px;
+    object-fit: cover;
+}
+
+.swiper-film_name {
+    position: absolute;
+    font-size: 40px;
+    left: 40px;
+    bottom: 40px;
+}
+
+.swiper-btn::after {
+    color: white;
+    font-weight: 800;
+}
+
+.swiper-btn::after:hover {
+    transform: scale(1.2%);
 }

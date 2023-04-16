@@ -18,15 +18,18 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/svg.css">
-    <link rel="stylesheet" href="styles/slider.css">
+    <link rel="stylesheet" href="styles/svg.css">    
     <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles/slider.css">
 
     <!-- scripts -->
     <script type="module" src="./src/main.js" defer></script>
     <script type="module" src="./src/modal.js" defer></script>
     <script type="module" src="./src/search.js" defer></script>
-    <script type="module" src="./src/login.js" defer></script>
+    <script type="module" src="./src/login.js" defer></script>    
+    <script src="./node_modules/swiper/swiper-bundle.min.js" defer></script>
+    <script type="module" src="./src/slider.js" defer></script>
 
     <title>Kinopoisk 2.0</title>
 </head>
@@ -90,15 +93,46 @@
             </div>
         </div>
 
-        <!-- content -->
-        <div class="content_box main_container dflex_column jcStart_aiStart">
-            <div class="slider_container">
-                <div class="slider_track dflex_row jcStart_aiCenter">
-                    <div class="slider_item dflex_row jcCenter_aiCenter">
-                        <!-- <div class="slider_img"><img src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/464963.jpg" alt="111"></div> -->
+        <div class="swiper-container swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-item swiper-slide">
+                    <div class="swiper-img">
+                        <img src="https://avatars.mds.yandex.net/get-ott/200035/2a0000017d5bad9aee6287b862b1414eb223/orig" alt="ИП">
                     </div>
+                    <div class="swiper-film_name">Игра престолов</div>
+                </div>
+                <div class="swiper-item swiper-slide">
+                    <div class="swiper-img">
+                        <img src="https://avatars.mds.yandex.net/get-ott/2419418/2a0000017c27e0e090b55381c1b06e5c5b0b/orig" alt="ИП">
+                    </div>
+                    <div class="swiper-film_name">Матрица</div>
+                </div>
+                <div class="swiper-item swiper-slide">
+                    <div class="swiper-img">
+                        <img src="https://avatars.mds.yandex.net/get-ott/200035/2a0000017d5bad9aee6287b862b1414eb223/orig" alt="ИП">
+                    </div>
+                    <div class="swiper-film_name">Игра престолов</div>
+                </div>
+                <div class="swiper-item swiper-slide">
+                    <div class="swiper-img">
+                        <img src="https://avatars.mds.yandex.net/get-ott/200035/2a0000017d5bad9aee6287b862b1414eb223/orig" alt="ИП">
+                    </div>
+                    <div class="swiper-film_name">Игра престолов</div>
+                </div>
+                <div class="swiper-item swiper-slide">
+                    <div class="swiper-img">
+                        <img src="https://avatars.mds.yandex.net/get-ott/200035/2a0000017d5bad9aee6287b862b1414eb223/orig" alt="ИП">
+                    </div>
+                    <div class="swiper-film_name">Игра престолов</div>
                 </div>
             </div>
+            <div class="swiper-button-prev swiper-btn"></div>
+            <div class="swiper-button-next swiper-btn"></div>
+        </div>
+
+        <!-- content -->
+        <div class="content_box main_container dflex_column jcStart_aiStart">
+            
 
             <div class="line"></div>
 
