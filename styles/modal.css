@@ -138,12 +138,14 @@
 }
 
 .info_title {
-    width: 210px;
+    min-width: 230px;
+    width: 150px;
     font-weight: 800;
 }
 
 @media (max-width: 560px) {
     .info_title {
+        min-width: 150px;
         width: 150px;
     }
 }
