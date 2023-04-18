@@ -46,7 +46,7 @@ function showFilms(data, apiKey, moviesList, movieCardClassName="film_card") {
     data.forEach(film=>{
         const filmCard = document.createElement(`div`);
         filmCard.classList.add(movieCardClassName);
-        filmCard.setAttribute('id', `${film.kinopoiskId || film.filmId}`);
+        filmCard.setAttribute('data-filmid', `${film.kinopoiskId || film.filmId}`);
 
         movieOnClick(filmCard, apiKey);
 
@@ -62,7 +62,8 @@ function showFilms(data, apiKey, moviesList, movieCardClassName="film_card") {
 
 function movieOnClick(filmCard, apiKey) {
     filmCard.addEventListener('click', e => {
-        const filmId = e.currentTarget.id;
+        const filmId = filmCard.dataset.filmid;
+        console.log(filmId);
         showModal(`movie`, apiKey, filmId);
     })
 }
@@ -83,4 +84,4 @@ async function returnData(dataName, apiKey, url) {
     return data;
 }
 
-export {showPremiers, showSearchResults};
+export {showPremiers, showSearchResults, returnData};

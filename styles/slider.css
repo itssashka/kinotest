@@ -56,7 +56,3 @@
     color: white;
     font-weight: 800;
 }
-
-.swiper-btn::after:hover {
-    transform: scale(1.2%);
-}
