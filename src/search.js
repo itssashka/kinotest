@@ -50,7 +50,6 @@ export default function modalSearchEvents(){
 
     function eventSubmit(e) {
         e.preventDefault();
-        console.log(`start search`);
         const searchRequest = searchFiledModal.value;
         const finalURL = `${url}${searchRequest}`;
         if(searchRequest.length > 0) {

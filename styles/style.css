@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+/* @custom-media --desktop(max-width: 1120px);
+@custom-media --tablet(max-width: 768px);
+@custom-media --mobile(max-width: 560px); */
+
 a, a:hover, a:visited, a:active {
     text-decoration: none;
     color: inherit;

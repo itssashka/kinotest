@@ -12,6 +12,8 @@
     width: 1080px;
 }
 
+
+
 .swiper-item.swiper-slide-active {
     filter: brightness(1);
     transition: all .3s ease-in-out;
@@ -43,6 +45,11 @@
     width: 100%;    
     height: 550px;
     object-fit: cover;
+}
+
+@media (max-width: 1120px) {
+    .swiper-item{width:100%;}
+    .swwiper-img img {height: 300px};
 }
 
 .swiper-film_name {

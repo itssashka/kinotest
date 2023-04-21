@@ -17,6 +17,8 @@
 
     overflow-y: auto;
     overflow-x: hidden; 
+
+    scrollbar-gutter: stable both-edges;
 }
 
 .modal.open {

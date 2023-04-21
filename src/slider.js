@@ -1,4 +1,3 @@
-import getFilmsFromApi from "../modules/getFilmsList.js"
 import showModal from "./modal.js";
 import { returnData } from "../modules/showFilms.js";
 const date = new Date();
@@ -25,8 +24,6 @@ export default async function addSwiper(APIkey) {
 
 async function getFilms(apiKey,url) {  
   const data = await returnData('releases',apiKey, url);
-  console.log(data);
-
   data.releases.forEach((film) => {
     const swiperSlide = document.createElement('div');
     swiperSlide.classList.add('swiper-item', 'swiper-slide')
@@ -44,7 +41,7 @@ async function getFilms(apiKey,url) {
 }
 
 function createSwiper() {
-  const swiper = new Swiper('.swiper', {
+  new Swiper('.swiper', {
     // Optional parameters
     spaceBetween: 5,
     slidesPerView: `auto`,
@@ -69,7 +66,7 @@ function createSwiper() {
 
 function movieOnClick(filmCard, apiKey) {
   filmCard.addEventListener('click', e => {
-      if(filmCard.classList.contains('swiper-slide-active')) {
+      if(!e.currentTarget.classList.contains('swiper-slide-next') && !e.currentTarget.classList.contains('swiper-slide-prev')) {
         const filmId = filmCard.dataset.filmid;
       showModal(`movie`, apiKey, filmId);
       }      
