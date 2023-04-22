@@ -21,7 +21,7 @@ const monthArr = [
 
 
 //ключ и ссылки API
-const APIkey = "37a5b6ee-c8b2-4770-a156-7801d3dd5d89";
+const APIkey = "fd2e3646-d291-4baf-b188-5fe312515d9d";
 export {APIkey, monthArr};
 
 const premiersUrl = `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${date.getFullYear()}&month=${monthArr[date.getMonth()]}`;
