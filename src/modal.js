@@ -4,6 +4,7 @@ import User from "../modules/User.js";
 import { addComment, addCommentBlock, showComments } from "./showComments.js";
 import modalSearchEvents from "./search.js";
 import Favorite from "../modules/Favorite.js";
+import throttle from "../modules/throttle.js";
 
 const modal = document.querySelector('.modal'); // modal window
 const btnCloseModal = document.querySelector('.btn_close_modal'); // close btn
@@ -35,11 +36,10 @@ async function modalMovie(apiKey, filmId) {
     const modalContent = document.querySelector('.modal_content');    
     modalContent.innerHTML = await returnFilmInfo(apiKey, filmId);
     modalContent.appendChild(addCommentBlock());  
-    const user = new User();  
+    const user = new User();
 
-
-    if (user.isLogin() && !isFilmInFavorite(filmId)) await addToFavorite(apiKey, filmId);
-
+    if (user.isLogin() && !isFilmInFavorite(filmId)) {await addToFavorite(apiKey, filmId)}
+    else if (user.isLogin()) {modalRemoveFromeFavorite(apiKey,filmId)};
     
     const commentForm = document.querySelector('.add_comment_form');
 
@@ -65,14 +65,14 @@ async function returnFilmInfo(apiKey, filmId) {
                     <div class="modal_film_rating dflex_row jcCenter_aiCenter">${data.ratingKinopoisk ? data.ratingKinopoisk : "-"}</div>
                     <img src="${data.posterUrlPreview}" alt="Film Poster">
                 </div>
-                ${(favorite.isLogin() && !isFilmInFavorite(filmId))
-                    ? ` <div class="add_to_favorite btns dflex_column jcCenter_aiCenter">
-                            Добавить в избранное
-                        </div>
-                    `
+                ${favorite.isLogin() 
+                    ? `<div class="add_to_favorite btns dflex_column jcCenter_aiCenter">
+                        Добавить в избранное
+                        </div>  
+                        `
                     : ''
                 }
-                
+                              
             </div>          
             
             <div class="modal_film_desc dflex_column jcStart_aiStart">
@@ -118,13 +118,37 @@ async function returnFilmInfo(apiKey, filmId) {
 async function addToFavorite(apiKey, filmId){
     const url = `https://kinopoiskapiunofficial.tech/api/v2.2/films/${filmId}`
     const addToFavoritebtn = document.querySelector('.add_to_favorite');
+    addToFavoritebtn.innerHTML = `Добавить в избранное`;
     const favorite = new Favorite();
     const filmData = await getFilmsFromApi(apiKey, url);
+    const throttledeventAddToFavorite = throttle(eventAddToFavorite, 1000);
 
-    addToFavoritebtn.addEventListener('click', e => {
+    addToFavoritebtn.addEventListener('click', throttledeventAddToFavorite);
+
+    function eventAddToFavorite() {
         favorite.addToFavorite(filmData);
+        console.log("add");
         addToFavoritebtn.classList.add(`disable`)
-    })
+        addToFavoritebtn.removeEventListener('click', throttledeventAddToFavorite);
+        modalRemoveFromeFavorite(apiKey, filmId)
+    }
+}
+
+function modalRemoveFromeFavorite(apiKey, filmId){
+    const favorite = new Favorite();
+    const addToFavoritebtn = document.querySelector('.add_to_favorite');
+    addToFavoritebtn.classList.add('disable');
+    addToFavoritebtn.innerHTML = `Убрать из избранного`;
+    const throttledEventRemoveFromFavorite = throttle(eventRemoveFromFavorite, 1000);
+    addToFavoritebtn.addEventListener('click', throttledEventRemoveFromFavorite);
+    
+    function eventRemoveFromFavorite(){
+        favorite.removeFromFavorite(filmId);
+        addToFavoritebtn.classList.remove('disable');
+        console.log("remove");
+        addToFavoritebtn.removeEventListener('click', throttledEventRemoveFromFavorite);
+        addToFavorite(apiKey, filmId);
+    }
 }
 
 
@@ -242,7 +266,7 @@ function accountFavoriteFilms(modalFavorite) {
                 `
     
                 modalFavorite.prepend(movie);
-                removeFromFavorite(film.filmKpId,modalFavorite);
+                removeFromFavoriteAccount(film.filmKpId,modalFavorite);
             }
         });
     }
@@ -256,7 +280,7 @@ function accountFavoriteFilms(modalFavorite) {
     }
 }
 
-function removeFromFavorite(filmId,modalFavorite){
+function removeFromFavoriteAccount(filmId,modalFavorite){
     const favorite = new Favorite();
     const removeBtn = document.querySelector('.remove_from_favorite');
     removeBtn.addEventListener('click', e=>{

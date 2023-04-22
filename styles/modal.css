@@ -89,8 +89,7 @@
 }
 
 .add_to_favorite.disable {
-    opacity: 0;
-    visibility: hidden;
+    background-color: #BFBFBF;
 }
 
 .modal_film_rating {

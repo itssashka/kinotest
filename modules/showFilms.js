@@ -55,7 +55,6 @@ function showFilms(data, apiKey, moviesList, movieCardClassName="film_card") {
 function movieOnClick(filmCard, apiKey) {
     filmCard.addEventListener('click', e => {
         const filmId = filmCard.dataset.filmid;
-        console.log(filmId);
         showModal(`movie`, apiKey, filmId);
     })
 }

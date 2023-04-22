@@ -62,6 +62,7 @@
 .swiper-btn::after {
     color: white;
     font-weight: 800;
+    padding: 55px;
 }
 
 @media (max-width: 1120px) {

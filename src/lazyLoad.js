@@ -2,6 +2,7 @@ import {APIkey, monthArr } from "./main.js";
 import { showPremiers } from "../modules/showFilms.js";
 const windowHeight = document.documentElement.clientHeight;
 const filmsBlock = document.querySelector('.films_list');
+const preLoader = document.querySelector('.pre_loader');
 let month = new Date().getMonth() === 11 ? 0 : new Date().getMonth() + 1;
 let year = new Date().getFullYear();
 
@@ -27,15 +28,19 @@ async function getContent() {
     console.log(month);
     console.log(monthArr[month]);
     if(month !== 11) {
+        preLoader.classList.add('_loading')
         filmsBlock.classList.add('loading')
         await showPremiers(APIkey,premiersUrl);
         month++;
         filmsBlock.classList.remove('loading')
+        preLoader.classList.remove('_loading')
     } else { 
-        filmsBlock.classList.add('loading')
+        preLoader.classList.add('_loading');
+        filmsBlock.classList.add('loading');
         await showPremiers(APIkey,premiersUrl);
         month = 0;
         year++;
         filmsBlock.classList.remove('loading')
+        preLoader.classList.remove('_loading')
     }
 }

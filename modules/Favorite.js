@@ -49,14 +49,17 @@ export default class Favorite extends User {
     }
 
     removeFromFavorite(filmId) {
+        console.log(filmId);
         const currentUser = this.currentUser();
         const users = JSON.parse(localStorage.getItem('Users'));
+        console.log("favorite remove");
         const newUsersList = users.users.map(user => {
             if(user.userEmail === currentUser) {
                 user.favoiteFilms = user.favoiteFilms.map(item => {
                     let returnedUser;
                     if(!item) return item
-                    if(item.filmKpId === filmId) {
+                    if(item.filmKpId == filmId) {
+                        console.log('returned Null');
                         returnedUser = null
                     } else returnedUser = item
 
@@ -67,6 +70,7 @@ export default class Favorite extends User {
             return user
         })
 
+        console.log(newUsersList);
         const newUsers = {users: newUsersList};
         localStorage.setItem('Users', JSON.stringify(newUsers));
     }
