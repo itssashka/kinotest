@@ -91,6 +91,7 @@ body.lock {
 }
 
 .wrapper {
+    position: relative;
     background-color: #161F30;
     width: 100%;
     min-height: 100vh;

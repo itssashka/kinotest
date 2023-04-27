@@ -3,6 +3,7 @@
     margin-top: 72px;
     display: flex;
     justify-content: center;
+    font-weight: 800;
 }
 
 .swiper-item {

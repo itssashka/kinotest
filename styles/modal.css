@@ -176,6 +176,11 @@
     gap: 20px;
 }
 
+.comments {
+    width: 100%;
+    gap: 20px;
+}
+
 
 .modal_comments {
     width: 50%;

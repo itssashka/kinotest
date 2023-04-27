@@ -1,0 +1,49 @@
+.pagination {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    gap: 20px;
+    user-select:none;
+}
+
+.pagination-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: 20px;
+    align-self: center;
+}
+
+.pagination-btns div {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pagination-btns div:hover:not(.pagination_dots) {
+    background-color: #127369;       
+}
+
+.pagination-btns div.active {
+    background-color: #127369;    
+}
+
+.pagination_dots {
+    cursor: cell;
+}
+
+.svg_btnArrow{
+    width: 30px;
+    height: 30px;
+    fill:white;
+}
+
+
+

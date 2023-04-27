@@ -1,6 +1,7 @@
 import Comments from "../modules/Comments.js";
 import objIsEmpty from "../modules/objIsEmpty.js";
 import User from "../modules/User.js";
+import Paginate from "../modules/Paginate.js";
 
 export {addCommentBlock, showComments, addComment};
 
@@ -14,8 +15,9 @@ const btnEll = `
 
 function showComments(filmId){
     const commentsObj = new Comments(filmId);
-    const commentEl = document.querySelector('.modal_comments');
+    const commentEl = document.querySelector('.comments');
     const commentsInfo = commentsObj.getComments();
+    const paginationBlock = document.querySelector('.pagination');
 
     commentEl.innerHTML='';
 
@@ -26,7 +28,7 @@ function showComments(filmId){
         commentsInfo.comments.forEach((commentItem, idx) => {
             if(commentItem) {
                 const comment = document.createElement('div');
-                comment.classList.add(`comment`, `dflex_column`);
+                comment.classList.add(`comment`, `dflex_column`, 'pagination-ellement');
                 comment.setAttribute('data-commentId', `${idx}`)
                 comment.innerHTML = `
                     ${currentUser === commentItem.userID 
@@ -49,6 +51,7 @@ function showComments(filmId){
         });
 
         const comments = document.querySelectorAll('.comment');
+        const pagination = new Paginate(paginationBlock, 10, 1)
 
         if(comments.length === 0) {
             commentEl.innerHTML = `Комментариев пока нет`;
@@ -90,7 +93,11 @@ function addCommentBlock(){
     commentBlock.innerHTML =  `
             <div class="comments_header headers">Отзывы</div>
             <div class="comments_content dflex_row jcStart_aiStart">
-                <div class="modal_comments dflex_column jcStart_aiStart">                     
+                <div class="modal_comments dflex_column jcStart_aiStart pagination">
+                    <div class="comments dflex_column jcStart_aiStart pagination-data">
+                    </div>
+                    <div class="pagination-btns">
+                    </div>                     
                 </div>
                 <div class="modal_add_comment">
                     <form action="#" class="add_comment_form">
