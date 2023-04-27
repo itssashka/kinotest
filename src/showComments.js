@@ -51,7 +51,7 @@ function showComments(filmId){
         });
 
         const comments = document.querySelectorAll('.comment');
-        const pagination = new Paginate(paginationBlock, 10, 1)
+        const pagination = new Paginate(paginationBlock, 5, 1)
 
         if(comments.length === 0) {
             commentEl.innerHTML = `Комментариев пока нет`;

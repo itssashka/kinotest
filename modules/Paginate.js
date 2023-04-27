@@ -7,6 +7,8 @@ export default class Paginate{
         this.btnsContainer = this.paginationContainer.querySelector('.pagination-btns');
         this.paginationEllements = this.dataContainer.querySelectorAll('.pagination-ellement');
         this.pagesCount = Math.ceil(this.paginationEllements.length/this.maxEllements); 
+        this.beforePages;
+        this.afterPages;
 
         this.paginateBtns();
         this.buttonsOnClick();
@@ -22,9 +24,11 @@ export default class Paginate{
 
     paginateBtns(){
         let ellements = ``;
-        let beforePages = this.currentPage - 1;
-        let afterPages = this.currentPage + 1;
+        this.beforePages = this.currentPage - 1;
+        this.afterPages = this.currentPage + 1;
+
         if(this.pagesCount < 2) return;
+
         if(this.currentPage > 1){
             ellements+=`
                 <div class="pagination_btn-prev">
@@ -42,42 +46,9 @@ export default class Paginate{
             }
         }
 
-        if(this.currentPage === this.pagesCount){
-            if(this.pagesCount > 4) {
-                afterPages = this.currentPage;
-                beforePages = beforePages - 2;
-            }else{
-                afterPages = this.currentPage;
-                beforePages = 1;
-            }            
-        }else if (this.currentPage === this.pagesCount - 1) {
-            if(this.pagesCount > 4){
-                beforePages = beforePages - 1;
-            }else {
-                afterPages = this.pagesCount;
-                beforePages = 1;
-            }            
-        }
+        this.btnsRange();
 
-        if(this.currentPage === 1) {
-            if(this.pagesCount > 4){
-                beforePages = 1;
-                afterPages = afterPages + 2;
-            }else {
-                beforePages = 1;
-                afterPages = this.pagesCount;
-                console.log(beforePages, ' ', afterPages);
-            }
-        }else if (this.currentPage === 2) {
-            if(this.pagesCount > 4){
-                afterPages = afterPages + 1;
-            }else {
-                beforePages = 1;
-                afterPages = this.pagesCount;
-            }            
-        }
-
-        for(let i = beforePages; i <= afterPages; i++){
+        for(let i = this.beforePages; i <= this.afterPages; i++){
             console.log(i);
             ellements+=`<div class="pagination_pageNum ${i === this.currentPage ? 'active' : ''}" data-pagenum="${i}">${i}</div>`
         }
@@ -100,6 +71,42 @@ export default class Paginate{
         }
 
         this.btnsContainer.innerHTML = ellements;
+    }
+
+    btnsRange(){
+        if(this.currentPage === this.pagesCount){
+            if(this.pagesCount > 4) {
+                this.afterPages = this.currentPage;
+                this.beforePages = this.beforePages - 2;
+            }else{
+                this.afterPages = this.currentPage;
+                this.beforePages = 1;
+            }            
+        }else if (this.currentPage === this.pagesCount - 1) {
+            if(this.pagesCount > 4){
+                this.beforePages = this.beforePages - 1;
+            }else {
+                this.afterPages = this.pagesCount;
+                this.beforePages = 1;
+            }            
+        }
+
+        if(this.currentPage === 1) {
+            if(this.pagesCount > 4){
+                this.beforePages = 1;
+                this.afterPages = this.afterPages + 2;
+            }else {
+                this.beforePages = 1;
+                this.afterPages = this.pagesCount;
+            }
+        }else if (this.currentPage === 2) {
+            if(this.pagesCount > 4){
+                this.afterPages = this.afterPages + 1;
+            }else {
+                this.beforePages = 1;
+                this.afterPages = this.pagesCount;
+            }            
+        }
     }
 
 
