@@ -6,13 +6,16 @@ import modalSearchEvents from "./search.js";
 import Favorite from "../modules/Favorite.js";
 import throttle from "../modules/throttle.js";
 
+
 const modal = document.querySelector('.modal'); // modal window
 const btnCloseModal = document.querySelector('.btn_close_modal'); // close btn
 const body = document.querySelector(`body`)
 
 //закрытие модального окна
 btnCloseModal.addEventListener('mousedown', e => {
-    const modalContent = document.querySelector('.modal_content');   
+    const modalContent = document.querySelector('.modal_content');  
+    body.style.paddingRight = 0; 
+    modal.style.paddingRight = 0;
     modal.classList.remove('open')
     body.classList.remove('lock')
     modalContent.innerHTML='';
@@ -329,6 +332,9 @@ function isFilmInFavorite(currentFilmId){
 
 // открытие модального окна
 function openModal() {
+    const paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
+    body.style.paddingRight = paddingOffset;
+    modal.style.paddingRight = paddingOffset;
     modal.classList.add('open');
-    body.classList.add('lock')
+    body.classList.add('lock');
 }
