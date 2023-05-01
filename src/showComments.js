@@ -18,7 +18,9 @@ function showComments(filmId){
     const commentEl = document.querySelector('.comments');
     const commentsInfo = commentsObj.getComments();
     const paginationBlock = document.querySelector('.pagination');
-
+    const paginateBtns = document.querySelector('.pagination-btns');
+    
+    paginateBtns.innerHTML = '';
     commentEl.innerHTML='';
 
     const user = new User();
@@ -44,14 +46,13 @@ function showComments(filmId){
                 commentEl.prepend(comment);
 
                 if(currentUser === commentItem.userID){
-                    console.log('remove');
                     removeComment(commentsObj, idx, filmId);
                 }
             }            
         });
 
         const comments = document.querySelectorAll('.comment');
-        const pagination = new Paginate(paginationBlock, 5, 1)
+        const pagination = new Paginate(paginationBlock, 5, 1);
 
         if(comments.length === 0) {
             commentEl.innerHTML = `Комментариев пока нет`;
@@ -64,7 +65,6 @@ function removeComment(commentsObj, commentId, filmId){
     const deleteBtn = document.querySelector('.btn_delete_comment');
 
     deleteBtn.addEventListener('click', event => {
-        console.log(`del`);
         commentsObj.removeComment(commentId);
         showComments(filmId);
     })

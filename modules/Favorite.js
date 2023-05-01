@@ -1,7 +1,7 @@
 import User from "./User.js";
+const user = new User();
 
-export default class Favorite extends User {
-
+export default class Favorite extends User{
     addToFavorite(film) {
         const currentUser = this.currentUser();
         const users = JSON.parse(localStorage.getItem('Users'));

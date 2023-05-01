@@ -26,7 +26,6 @@ export default class Paginate{
         let ellements = ``;
         this.beforePages = this.currentPage - 1;
         this.afterPages = this.currentPage + 1;
-
         if(this.pagesCount < 2) return;
 
         if(this.currentPage > 1){
